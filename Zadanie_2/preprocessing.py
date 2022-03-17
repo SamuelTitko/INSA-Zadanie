@@ -73,7 +73,7 @@ class Pipeline:
     for categorical in self.categorical_features:
       column_names = self.encoders[categorical].get_feature_names_out()
       values = dataset[categorical].to_numpy().reshape(-1, 1)
-      dataset[column_names] = self.encoders[categorical].fit_transform(values).toarray()
+      dataset[column_names] = self.encoders[categorical].transform(values).toarray()
       dataset.drop([categorical], axis=1, inplace=True)
     return dataset
 
