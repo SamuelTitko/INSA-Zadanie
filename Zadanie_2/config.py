@@ -1,5 +1,3 @@
-from sklearn.svm import LinearSVC
-from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 
 
@@ -13,7 +11,6 @@ NUMERICAL = [
 ]
 
 CATEGORICAL = [
-  'PassengerId',
   'Survived',
   'Pclass',
   'Sex',
@@ -23,21 +20,21 @@ CATEGORICAL = [
   'Parch'
 ]
 
+FEATURES = [
+  'Age',
+  'Pclass',
+  'Cabin',
+  'Sex',
+]
+
 NUMERICAL_FEATURES = [
   'Age'
 ]
 
 CATEGORICAL_FEATURES = [
+  'Pclass',
   'Cabin',
-  'Pclass',
   'Sex',
 ]
 
-FEATURES = [
-  'Sex',
-  'Age',
-  'Pclass',
-  'Cabin'
-]
-
-TARGET = 'Survived'
+TARGET = ['Survived']
