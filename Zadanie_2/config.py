@@ -1,7 +1,7 @@
 from sklearn.ensemble import RandomForestClassifier
 
 
-PATH_TO_DATASET = 'dataset.csv'
+PATH_TO_DATASET = 'dataset/dataset.csv'
 
 CLASSIFIER = RandomForestClassifier()
 

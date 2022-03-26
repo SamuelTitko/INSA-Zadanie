@@ -12,7 +12,7 @@ if __name__ == '__main__':
     config.TARGET,
   )
 
-  dataset = pd.read_csv('dataset/dataset.csv')
+  dataset = pd.read_csv(PATH_TO_DATASET)
 
   pipeline.fit(dataset)
   score, matrix = pipeline.evaluate_model()
