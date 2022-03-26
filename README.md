@@ -3,6 +3,7 @@
 ---
 
 **Meno a priezvisko:** Samuel Titko
+
 **Odbor:** Inteligentné systémy
 
 `Zadanie_1` - práca s jupyter notebookom
