@@ -5,7 +5,7 @@ from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 
 
 class Pipeline:
-  def __init__(self, model, numerical, categorical, numerical_features, categorical_features, target, test_size=0.30):
+  def __init__(self, model, numerical_features, categorical_features, target, test_size=0.30):
     self.x_train = None
     self.x_test = None
     self.y_train = None
@@ -15,8 +15,6 @@ class Pipeline:
     self.encoder = OneHotEncoder()
     self.model = model
 
-    self.numerical = numerical
-    self.categorical = categorical
     self.numerical_features = numerical_features
     self.categorical_features = categorical_features
     self.target = target

@@ -3,38 +3,14 @@ from sklearn.ensemble import RandomForestClassifier
 
 PATH_TO_DATASET = 'dataset/dataset.csv'
 
-CLASSIFIER = RandomForestClassifier()
+TEST_SIZE = 0.2
 
-NUMERICAL = [
-  'Age',
-  'Fare'
-]
+NUMERICAL_FEATURES = ['Age']
 
-CATEGORICAL = [
-  'Survived',
-  'Pclass',
-  'Sex',
-  'Cabin',
-  'Embarked',
-  'SibSp',
-  'Parch'
-]
+CATEGORICAL_FEATURES = ['Cabin', 'Pclass','Sex',]
 
-FEATURES = [
-  'Age',
-  'Pclass',
-  'Cabin',
-  'Sex',
-]
-
-NUMERICAL_FEATURES = [
-  'Age'
-]
-
-CATEGORICAL_FEATURES = [
-  'Pclass',
-  'Cabin',
-  'Sex',
-]
+FEATURES = NUMERICAL_FEATURES + CATEGORICAL_FEATURES
 
 TARGET = ['Survived']
+
+CLASSIFIER = RandomForestClassifier()

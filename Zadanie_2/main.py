@@ -5,14 +5,13 @@ from pipeline import Pipeline
 if __name__ == '__main__':
   pipeline = Pipeline(
     config.CLASSIFIER,
-    config.NUMERICAL,
-    config.CATEGORICAL,
     config.NUMERICAL_FEATURES,
     config.CATEGORICAL_FEATURES,
     config.TARGET,
+    config.TEST_SIZE
   )
 
-  dataset = pd.read_csv(PATH_TO_DATASET)
+  dataset = pd.read_csv(config.PATH_TO_DATASET)
 
   pipeline.fit(dataset)
   score, matrix = pipeline.evaluate_model()
