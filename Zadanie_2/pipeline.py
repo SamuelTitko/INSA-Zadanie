@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, f1_score
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 
 
@@ -78,4 +78,9 @@ class Pipeline:
     return self.model.predict(self.transform(dataset))
 
   def evaluate_model(self):
-    return self.model.score(self.x_test, self.y_test), confusion_matrix(self.y_test, self.model.predict(self.x_test))
+    y_pred = self.model.predict(self.x_test)
+    return [
+      self.model.score(self.x_test, self.y_test),
+      f1_score(self.y_test, y_pred),
+      confusion_matrix(self.y_test, y_pred)
+    ]
