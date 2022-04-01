@@ -1,5 +1,5 @@
 .vscode
 .virenv
 .tox
-
+model.egg-info
 __pycache__
