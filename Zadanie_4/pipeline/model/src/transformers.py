@@ -2,6 +2,18 @@ import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
 
+class FilterTransformer(BaseEstimator, TransformerMixin):
+  def __init__(self, variables=None):
+    self.variables = variables
+
+  def fit(self, X, y=None):
+    return self
+
+  def transform(self, X):
+    dataset = X.copy()
+    return dataset[self.variables]
+
+
 class CategoricalTransformer(BaseEstimator, TransformerMixin):
   def __init__(self, variables=None):
     self.variables = variables

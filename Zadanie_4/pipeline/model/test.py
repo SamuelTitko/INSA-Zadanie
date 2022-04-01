@@ -2,8 +2,9 @@ import logging
 import pandas as pd
 from sklearn.metrics import confusion_matrix, f1_score
 
-import config
-from src import manager, validation
+import config, validation
+from src import manager
+
 
 logger = logging.getLogger(__name__)
 

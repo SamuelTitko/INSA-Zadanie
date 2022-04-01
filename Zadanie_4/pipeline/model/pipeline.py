@@ -1,0 +1,17 @@
+import logging
+from sklearn.pipeline import Pipeline
+
+import config
+from src import manager, transformers
+
+logger = logging.getLogger(__name__)
+
+__version__ = manager.get_version(config.PATH_TO_VERSION)
+
+logger.info(f'Creating new pipeline.')
+pipeline = Pipeline([
+  ('filter_transformer', transformers.FilterTransformer(config.FEATURES)),
+  ('categorical_transformer', transformers.CategoricalTransformer(config.CATEGORICAL_FEATURES)),
+  ('numerical_transformer', transformers.NumericalTransformer(config.NUMERICAL_FEATURES)),
+  ("classifier_model", config.CLASSIFIER),
+])
