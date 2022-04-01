@@ -5,7 +5,24 @@ import config, predict
 from pipeline import pipeline, __version__
 
 
+def test_config():
+  import config
+  assert 'Age' in config.NUMERICAL_FEATURES
+  assert 'Cabin' in config.CATEGORICAL_FEATURES
+  assert 'Pclass' in config.CATEGORICAL_FEATURES
+  assert 'Sex' in config.CATEGORICAL_FEATURES
+  assert 'Parch' in config.CATEGORICAL_FEATURES
+  assert 'SibSp' in config.CATEGORICAL_FEATURES
+  assert 'Survived' in config.TARGET
+  assert 'Age' in config.FEATURES_WITH_NA
+  assert 'Cabin' in config.FEATURES_WITH_NA
+
+
 def test_single_prediction():
+  import numpy as np
+  import pandas as pd
+  import config, predict
+
   dataset = pd.read_json(config.PATH_TO_TEST_DATASET)
   output = predict.run(dataset[0:1])
   y_pred = output['predictions']
@@ -16,6 +33,9 @@ def test_single_prediction():
 
 
 def test_multiple_predictions():
+  import pandas as pd
+  import config, predict
+
   dataset = pd.read_json(config.PATH_TO_TEST_DATASET)
   output = predict.run(dataset)
   y_pred = output['predictions']
@@ -25,6 +45,10 @@ def test_multiple_predictions():
 
 
 def test_shape():
+  import pandas as pd
+  import config
+  from pipeline import pipeline
+
   dataset = pd.read_csv(config.PATH_TO_TRAIN_DATASET)
   x_train, y_train = dataset[config.FEATURES], dataset[config.TARGET]
   pipeline.fit(dataset[config.FEATURES], dataset[config.TARGET])
@@ -37,6 +61,10 @@ def test_shape():
 
 
 def test_drop_unnecessary_columns():
+  import pandas as pd
+  import config
+  from pipeline import pipeline
+
   dataset = pd.read_csv(config.PATH_TO_TRAIN_DATASET)
   x_train, y_train = dataset[config.FEATURES], dataset[config.TARGET]
   pipeline.fit(dataset[config.FEATURES], dataset[config.TARGET])
@@ -47,6 +75,9 @@ def test_drop_unnecessary_columns():
 
 
 def test_min_max_values():
+  import pandas as pd
+  import config
+  from pipeline import pipeline
   dataset = pd.read_csv(config.PATH_TO_TRAIN_DATASET)
   x_train, y_train = dataset[config.FEATURES], dataset[config.TARGET]
   pipeline.fit(dataset[config.FEATURES], dataset[config.TARGET])
@@ -59,7 +90,8 @@ def test_min_max_values():
 
 
 def test_validation():
-  import validation
+  import pandas as pd
+  import config, validation
   dataset = pd.read_csv(config.PATH_TO_TRAIN_DATASET)
   dataset = validation.validate_dataset(dataset)
   assert not dataset.isna().sum().any()
