@@ -3,3 +3,6 @@
 .tox
 model.egg-info
 __pycache__
+build
+dist
+.log

@@ -2,11 +2,9 @@ import pandas as pd
 import numpy as np
 import logging
 
-import config, validation
-from src import manager
+from model import config, validation, manager, transformers
 
 logger = logging.getLogger(__name__)
-
 __version__ = manager.get_version(config.PATH_TO_VERSION)
 
 
@@ -28,7 +26,3 @@ def run(dataset):
   logger.info(f'Done!')
 
   return response
-
-
-if __name__ == '__main__':
-  run(pd.read_json(config.PATH_TO_TEST_DATASET))

@@ -1,11 +1,9 @@
 import logging
 from sklearn.pipeline import Pipeline
 
-import config
-from src import manager, transformers
+from model import config, manager, transformers
 
 logger = logging.getLogger(__name__)
-
 __version__ = manager.get_version(config.PATH_TO_VERSION)
 
 logger.info(f'Creating new pipeline.')

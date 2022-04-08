@@ -2,8 +2,7 @@ import logging
 import pandas as pd
 
 import config
-from pipeline import pipeline, __version__
-from src import manager
+from pipeline import pipeline, manager, __version__
 
 logger = logging.getLogger(__name__)
 

@@ -1,5 +1,5 @@
 import logging
-import config
+from model import config
 
 logger = logging.getLogger(__name__)
 
