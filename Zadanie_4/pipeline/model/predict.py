@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import logging
 
 from model import config, validation, manager, transformers
@@ -18,8 +17,8 @@ def run(dataset):
     config.MODEL_NAME,
     __version__
   )
-  prediction = pipeline.predict(dataset[config.FEATURES])
-  response = {'predictions': prediction.tolist()}
+  predictions = pipeline.predict(dataset[config.FEATURES])
+  response = {'predictions': predictions.tolist()}
 
   logger.info(f'Using model version: {__version__}')
   logger.info(f'Input dataset:\n{dataset}\n')

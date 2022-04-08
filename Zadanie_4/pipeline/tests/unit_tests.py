@@ -1,11 +1,10 @@
-import numpy as np
-import pandas as pd
-
 from model import pipeline
 from model import predict
 from model import config
 from model import validation
 from model import transformers
+from model import manager
+
 
 def test_config():
   assert 'Age' in config.NUMERICAL_FEATURES
@@ -20,17 +19,17 @@ def test_config():
 
 
 def test_single_prediction():
-  dataset = pd.read_json(config.PATH_TO_TEST_DATASET)
+  dataset = manager.load_dataset(config.PATH_TO_TEST_DATASET)
   output = predict.run(dataset[0:1])
   y_pred = output['predictions']
 
   assert y_pred is not None
-  assert isinstance(y_pred[0], np.int64)
+  assert isinstance(y_pred[0], int)
   assert y_pred[0] == 0
 
 
 def test_multiple_predictions():
-  dataset = pd.read_json(config.PATH_TO_TEST_DATASET)
+  dataset = manager.load_dataset(config.PATH_TO_TEST_DATASET)
   output = predict.run(dataset)
   y_pred = output['predictions']
 
@@ -39,7 +38,7 @@ def test_multiple_predictions():
 
 
 def test_shape():
-  dataset = pd.read_csv(config.PATH_TO_TRAIN_DATASET)
+  dataset = manager.load_dataset(config.PATH_TO_TRAIN_DATASET)
   x_train, y_train = dataset[config.FEATURES], dataset[config.TARGET]
   pipeline.pipeline.fit(dataset[config.FEATURES], dataset[config.TARGET])
 
@@ -51,7 +50,7 @@ def test_shape():
 
 
 def test_drop_unnecessary_columns():
-  dataset = pd.read_csv(config.PATH_TO_TRAIN_DATASET)
+  dataset = manager.load_dataset(config.PATH_TO_TRAIN_DATASET)
   x_train, y_train = dataset[config.FEATURES], dataset[config.TARGET]
   pipeline.pipeline.fit(dataset[config.FEATURES], dataset[config.TARGET])
 
@@ -61,7 +60,7 @@ def test_drop_unnecessary_columns():
 
 
 def test_min_max_values():
-  dataset = pd.read_csv(config.PATH_TO_TRAIN_DATASET)
+  dataset = manager.load_dataset(config.PATH_TO_TRAIN_DATASET)
   x_train, y_train = dataset[config.FEATURES], dataset[config.TARGET]
   pipeline.pipeline.fit(dataset[config.FEATURES], dataset[config.TARGET])
 
@@ -73,6 +72,6 @@ def test_min_max_values():
 
 
 def test_validation():
-  dataset = pd.read_csv(config.PATH_TO_TRAIN_DATASET)
+  dataset = manager.load_dataset(config.PATH_TO_TRAIN_DATASET)
   dataset = validation.validate_dataset(dataset)
   assert not dataset.isna().sum().any()

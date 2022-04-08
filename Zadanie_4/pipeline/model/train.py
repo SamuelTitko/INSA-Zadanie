@@ -1,8 +1,7 @@
 import logging
-import pandas as pd
 
-import config
-from pipeline import pipeline, manager, __version__
+import config, manager
+from pipeline import pipeline, __version__
 
 logger = logging.getLogger(__name__)
 
@@ -10,7 +9,7 @@ logger = logging.getLogger(__name__)
 def run():
   logger.info('Running train.py file.')
   logger.info(f'Loading dataset from: {config.PATH_TO_TRAIN_DATASET}')
-  dataset = pd.read_csv(config.PATH_TO_TRAIN_DATASET)
+  dataset = manager.load_dataset(config.PATH_TO_TRAIN_DATASET)
   x_train, y_train = dataset[config.FEATURES], dataset[config.TARGET]
   logger.info(f'Creating new pipeline.')
   logger.info(f'Training pipeline...')

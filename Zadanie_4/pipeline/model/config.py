@@ -6,7 +6,7 @@ PACKAGE_ROOT = pathlib.Path(__file__).resolve().parent
 PATH_TO_VERSION = PACKAGE_ROOT / 'VERSION'
 PATH_TO_FULL_DATASET = PACKAGE_ROOT / 'dataset/dataset.csv'
 PATH_TO_TRAIN_DATASET = PACKAGE_ROOT / 'dataset/train.csv'
-PATH_TO_TEST_DATASET = PACKAGE_ROOT / 'dataset/test.json'
+PATH_TO_TEST_DATASET = PACKAGE_ROOT / 'dataset/test.csv'
 PATH_TO_MODEL = PACKAGE_ROOT / 'trained_models'
 
 NUMERICAL_FEATURES = ['Age']

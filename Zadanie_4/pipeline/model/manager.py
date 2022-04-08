@@ -1,3 +1,4 @@
+import pandas as pd
 import joblib
 import logging
 
@@ -7,6 +8,9 @@ def get_version(file_name):
   with open(f'{file_name}', 'r') as file:
     version = file.read()
   return version
+
+def load_dataset(path):
+  return pd.read_csv(path)
 
 def save_pipeline(path, file_name, version, pipeline, fmt='.pkl'):
   pipeline_name = f'{file_name}-{version}{fmt}'
