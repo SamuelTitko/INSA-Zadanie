@@ -12,7 +12,7 @@ def run():
   logger.info(f'Loading dataset from: {config.PATH_TO_TRAIN_DATASET}')
   dataset = pd.read_csv(config.PATH_TO_TRAIN_DATASET)
   x_train, y_train = dataset[config.FEATURES], dataset[config.TARGET]
-
+  logger.info(f'Creating new pipeline.')
   logger.info(f'Training pipeline...')
   pipeline.fit(x_train, y_train)
 

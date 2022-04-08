@@ -9,6 +9,7 @@ __version__ = manager.get_version(config.PATH_TO_VERSION)
 
 
 def run(dataset):
+  dataset = pd.DataFrame(dataset)
   logger.info('Running predict.py file.')
   dataset = validation.validate_dataset(dataset)
 

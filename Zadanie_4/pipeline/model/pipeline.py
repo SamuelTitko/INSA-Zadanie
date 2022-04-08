@@ -6,7 +6,6 @@ from model import config, manager, transformers
 logger = logging.getLogger(__name__)
 __version__ = manager.get_version(config.PATH_TO_VERSION)
 
-logger.info(f'Creating new pipeline.')
 pipeline = Pipeline([
   ('filter_transformer', transformers.FilterTransformer(config.FEATURES)),
   ('categorical_transformer', transformers.CategoricalTransformer(config.CATEGORICAL_FEATURES)),
