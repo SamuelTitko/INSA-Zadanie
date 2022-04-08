@@ -18,7 +18,7 @@ def run(dataset):
     __version__
   )
   prediction = pipeline.predict(dataset[config.FEATURES])
-  response = {'predictions': list(prediction)}
+  response = {'predictions': prediction.tolist()}
 
   logger.info(f'Using model version: {__version__}')
   logger.info(f'Input dataset:\n{dataset}\n')
