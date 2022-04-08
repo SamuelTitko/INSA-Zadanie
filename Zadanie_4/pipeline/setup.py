@@ -26,6 +26,7 @@ setup(
   python_requires=REQUIRES_PYTHON,
   url=URL,
   packages=find_packages(),
+  include_package_data=True,
   install_requires=load_requirements(),
   license='MIT',
   classifiers=['Programming Language :: Python :: 3.8']
