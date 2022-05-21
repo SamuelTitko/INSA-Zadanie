@@ -79,3 +79,17 @@
 └── README.md
 ```
 
+## Zadanie_4
+Postup setupu `pipeline`:
+1. `cd ./pipeline`,
+2. `python -m venv .virenv`
+3. `.\.virenv\Scripts\pip.exe install tox`
+4. `.\.virenv\Scripts\pip.exe install -r requirements.txt`
+5. `.\.virenv\Scripts\python.exe run_tests.py`
+
+Postup setupu `rest`:
+1. `cd ./rest`,
+2. `python -m venv .virenv`
+3. `.\.virenv\Scripts\pip.exe install pytest`
+4. `.\.virenv\Scripts\pip.exe install -r requirements.txt`
+5. `.\.virenv\Scripts\python.exe .\tests\unit_tests.py`
